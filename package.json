@@ -1,0 +1,14 @@
+{
+  "name": "restful-booker",
+  "version": "1.0.0",
+  "description": "Restful Booker Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "author": "Felipe Matheus",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^9.6.1"
+  }
+}
