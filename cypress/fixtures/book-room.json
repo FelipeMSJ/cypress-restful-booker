@@ -1,0 +1,11 @@
+{
+    "firstname": "Teste Nome",
+    "lastname": "Teste Sobrenome",
+    "email": "teste@teste.com",
+    "phone": "12345678912",
+    "bookingdates": {
+        "checkin": "2022-05-17", 
+        "checkout": "2022-05-19"
+    }
+}
+ 
