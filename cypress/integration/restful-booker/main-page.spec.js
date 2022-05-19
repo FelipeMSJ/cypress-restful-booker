@@ -18,19 +18,24 @@ describe('Página Principal', ()=>{
     //Caso de sucesso para reservar quarto
     it('Reservar quarto disponível', ()=>{
         cy.contains('button', 'Book this room').click() //Clica no botão 'Book this room'
+        //cy.contains('button', 'Book this room').trigger('mousedown').trigger('mouseup') //Clica no botão 'Book this room'
 
         const agendarQuarto = require('../../fixtures/book-room.json') //Importa o arquivo .json da pasta fixtures
 
-        //Preenche os campos de agendamento
+        //PREENCHE OS CAMPOS DE AGENDAMENTO
         cy.get('input[name="firstname"]').type(agendarQuarto.firstname)
         cy.get('input[name="lastname"]').type(agendarQuarto.lastname)
         cy.get('input[name="email"]').type(agendarQuarto.email)
         cy.get('input[name="phone"]').type(agendarQuarto.phone)
 
-        //Seleciona os dias de agendamento
+        //SELECIONA OS DIAS DE AGENDAMENTO
+        //Da um atributo id com o número do checkout do cliente
+        cy.contains('button', agendarQuarto.bookingdates.checkout.slice(-2)).invoke('attr', 'id', agendarQuarto.bookingdates.checkout.slice(-2))
+        //Faz com que o mouse arraste a partir da data de checkin até a data de chekout. Funciona manual, não consegui automatizar.
+        //Para utilizar .drag é necessário instalar um plugin
+        cy.contains('button', agendarQuarto.bookingdates.checkin.slice(-2)).drag(`button[id='${agendarQuarto.bookingdates.checkout.slice(-2)}']`)
 
-        //Clica no botão de agendar
-
-        
+        //CLICA NO BOTÃO DE AGENDAR
+        cy.contains('button', 'Book').click()
     })
 })
